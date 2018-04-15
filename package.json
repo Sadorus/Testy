@@ -1,0 +1,29 @@
+{
+  "name": "testy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "library.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "jest": "^22.4.3",
+    "n": "^2.1.8",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sadorus/Testy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sadorus/Testy/issues"
+  },
+  "homepage": "https://github.com/Sadorus/Testy#readme"
+}
