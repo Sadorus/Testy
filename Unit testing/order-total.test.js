@@ -1,31 +1,52 @@
 const orderTotal = require('./order-total')
 
+const emptyFunction = () => {}
+
+it('calls vatapi.com correctly', () => {
+  let isFakeFetchCalled = false
+  const fakeFetch = (url) => {
+    expect(url).toBe('https://vatapi.com/v1/country-code-check?code=PL')
+    isFakeFetchCalled = true
+  }
+  orderTotal(fakeFetch, {
+    country: 'PL',
+    items: [
+      {'name': 'Dragon waffles', price: 20, quantity: 2}
+    ]
+}).then(result => {
+  expect(isFakeFetchCalled).toBe(true)
+
+})
+})
+
+it('if country code specified')
+
 it('Quantity', () =>
-  expect(orderTotal({
+  orderTotal(emptyFunction, {
     items: [
       {'name': 'Dragon candy', price: 2, quantity: 3}
     ]
-})).toBe(6))
+}).then(result => expect(result).toBe(6)))
 
 it('No quantity specified', () =>
-  expect(orderTotal({
+  orderTotal(emptyFunction, {
     items: [
       {'name': 'Dragon candy', price: 3 }
     ]
-})).toBe(3))
+}).then(result => expect(result).toBe(3)))
 
 it('Happy path (Example 1)', () =>
-expect(orderTotal({
+orderTotal(emptyFunction, {
 items: [
   { name: 'Dragon food', price: 8, quantity: 1},
   { name: 'Dragon cage (small)', price: 800, quantity: 1}
 ]
-})).toBe(808))
+}).then(result => expect(result).toBe(808)))
 
 it('Happy path (Example 2)', () =>
-expect(orderTotal({
+orderTotal(emptyFunction, {
   items: [
     { name: 'Dragon collar', price: 20, quantity: 1},
     { name: 'Dragon chew toy', price: 40, quantity: 1}
   ]
-})).toBe(60))
+}).then(result => expect(result).toBe(60)))
